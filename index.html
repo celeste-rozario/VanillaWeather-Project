@@ -13,29 +13,35 @@
 <body>
     <div class="weather-app"> 
     <header> 
-        <form>
-            <input type="text"/ placeholder="Search a city">
-            <input type="submit" value="search"/>
+        <form class="search-form">
+            <input type="text"/ placeholder="Enter a city" required class="search-form-input">
+            <input type="submit" value="search" class="search-form-button"/>
         </form>
     </header>
     <main>
-    <h1>Paris</h1>
-    <div class="weather-info">
+        <div class="weather-app-data">
+            <div class="weather-info">
+    <h1 class="weather-app-city">Paris</h1>
+  
     <p>
         Tuesday 17:33, moderate rain
         <br> 
-        Humidity: 91%, Wind: 5.14km/h
+        Humidity: <strong> 91% </strong> , Wind: <strong> 5.14km/h </strong>
 
     </p>
 </div>
-<div class="temperature">
-    🌦️ 5°C
+<div class="temperature-container">
+    <div class="temp-emoji"> 🌦️ </div>
+    <div class="temp-value"> 5 </div>
+    <div class="temp-unit"> °C</div>
+    
+</div>
 </div>
 
 </main>
 
-    <footer> coded by 
-        <a href="https://github.com/celeste-rozario" target="_blank">  Celeste Rozario </a> code hosted on 
+    <footer> This project was coded by 
+        <a href="https://github.com/celeste-rozario" target="_blank">  Celeste Rozario</a>, hosted on 
         
         <a href="https://github.com/celeste-rozario/VanillaWeather-Project" target="_blank"> Github</a> 
         and website hosted on
