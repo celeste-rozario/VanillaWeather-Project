@@ -9,24 +9,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div class="weather-app"> 
     <header> 
-        <form class="search-form">
-            <input type="text"/ placeholder="Enter a city" required class="search-form-input">
+        <form class="search-form" id="search-form">
+            <input type="text"/ placeholder="Enter a city" required class="search-form-input" id="search-form-input">
             <input type="submit" value="search" class="search-form-button"/>
         </form>
     </header>
     <main>
         <div class="weather-app-data">
             <div class="weather-info">
-    <h1 class="weather-app-city">Paris</h1>
+    <h1 class="weather-app-city" id="cityElement">Paris</h1>
   
     <p>
         Tuesday 17:33, moderate rain
         <br> 
         Humidity: <strong> 91% </strong> , Wind: <strong> 5.14km/h </strong>
+    
 
     </p>
 </div>
@@ -48,6 +50,6 @@
     <a href="https://vanillaweather-project-celesterozario.netlify.app/" target="_blank">  Netlify </a>
     </footer>
 </div>
-    
+    <script src="src/index.js"> </script>
 </body>
 </html>
