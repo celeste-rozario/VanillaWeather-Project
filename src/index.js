@@ -9,7 +9,9 @@ function updateWeather(response){
     let windSpeedData = response.data.wind.speed;
     let timeElement = document.querySelector("#time");
     let date = new Date(response.data.time * 1000);
+    let emoji = document.querySelector("#temp-emoji");
 
+    emoji.innerHTML = `<img src="${response.data.condition.icon_url}" class="temp-emoji" />`;
     time.innerHTML = formatDate(date);
     windSpeedElement.innerHTML = `${windSpeedData}km/hr`;
     humidityElement.innerHTML = `${humidityData}%`;
@@ -26,7 +28,7 @@ function formatDate(date){
     let day = days[date.getDay()];
 
     if (minutes < 10){
-        minutes = `0{minutes}`;
+        minutes = `0${minutes}`;
     }
 
 return `${day} ${hours}:${minutes}`;

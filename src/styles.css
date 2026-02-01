@@ -72,14 +72,14 @@ header{
 .temperature-container {
     display: flex;
 }
-.temp-emoji{
-    font-size: 44px;
-    margin-top: 22px;
-    margin-left: 15px;
+#temp-emoji{
+    width: 88px;
+    height: 88px;
 }
 .temp-value {
     font-size: 88px;
     font-weight: bold;
+    line-height: 88px;
 }
 .temp-unit{
     font-size: 28px;
