@@ -31,6 +31,10 @@ function formatDate(date){
         minutes = `0${minutes}`;
     }
 
+    if (hours > 12){
+        hours = hours % 12 || 12;
+    }
+
 return `${day} ${hours}:${minutes}`;
 }
 
@@ -39,6 +43,29 @@ function searchCity(city){
 let apiKey = "9b5e5489a22c2ct5203a0ad09d7f3oab";
 let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 axios.get(apiUrl).then(updateWeather);
+}
+
+function displayForecast(){
+let days = ["Tues", "Wed", "Thurs", "Fri", "Sat"];
+let forecastHtml = " ";
+
+days.forEach(function(day) {
+forecastHtml = forecastHtml + ` <div class="weather-forecast-days"> 
+<div class="weather-forecast-date"> ${day}</div>
+<div class="weather-forecast-icon"> 🌤️ </div>
+<div class="weather-forecast-temp"> 
+    <div class="weather-forecast-toptemp"> 
+        <strong> 15℃ </strong>
+    </div>
+   <div class="weather-forecast-bottomtemp"> 9℃ 
+   </div> 
+</div>
+</div>
+`;
+
+let forecastElement = document.querySelector("#forecast");
+forecastElement.innerHTML = forecastHtml;
+});
 }
 
 
@@ -54,3 +81,6 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchInput);
 
 searchCity("Melbourne");
+displayForecast();
+
+
