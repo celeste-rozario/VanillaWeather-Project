@@ -51,27 +51,35 @@ function getForecast(city){
     let apiKey = "9b5e5489a22c2ct5203a0ad09d7f3oab";
     let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
     axios(apiUrl).then(displayForecast);
+}
 
+function formatDay(timestamp){
+    let date = new Date(timestamp * 1000);
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
+
+    return days[date.getDay()];
 }
 
 function displayForecast(response){
-let days = ["Tues", "Wed", "Thurs", "Fri", "Sat"];
 let forecastHtml = " ";
 
-days.forEach(function(day) {
+response.data.daily.forEach(function(day, index) {
+    if (index < 5){
 forecastHtml = forecastHtml + ` <div class="weather-forecast-days"> 
-<div class="weather-forecast-date"> ${day}</div>
-<div class="weather-forecast-icon"> 🌤️ </div>
+<div class="weather-forecast-date"> ${formatDay(day.time)} </div>
+<div class="weather-forecast-icon"> 
+<img src="${day.condition.icon_url}" />
+</div>
 <div class="weather-forecast-temp"> 
     <div class="weather-forecast-toptemp"> 
-        <strong> 15℃ </strong>
+        <strong> ${Math.round(day.temperature.maximum)}℃</strong>
     </div>
-   <div class="weather-forecast-bottomtemp"> 9℃ 
+   <div class="weather-forecast-bottomtemp"> ${Math.round(day.temperature.minimum)}℃ 
    </div> 
 </div>
 </div>
 `;
-
+}
 let forecastElement = document.querySelector("#forecast");
 forecastElement.innerHTML = forecastHtml;
 });
@@ -90,5 +98,3 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchInput);
 
 searchCity("Melbourne");
-
-
